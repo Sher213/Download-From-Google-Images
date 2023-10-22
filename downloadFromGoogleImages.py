@@ -20,7 +20,7 @@ def main(argv):
     numImages = argv[-1]
     queries = argv[:-1]
 
-    if numImages > 400:
+    if int(numImages) > 400:
         raise Exception("Argument Error: Number is too large. Less Than 400.")
 
     #build webdriver
