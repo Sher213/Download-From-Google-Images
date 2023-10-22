@@ -20,6 +20,10 @@ def main(argv):
     numImages = argv[-1]
     queries = argv[:-1]
 
+    if numImages > 400:
+        print("Argument Error: Number is too large. Less Than 400.")
+        exit()
+
     #build webdriver
     op = webdriver.ChromeOptions()
     op.add_argument('headless')
