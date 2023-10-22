@@ -21,8 +21,7 @@ def main(argv):
     queries = argv[:-1]
 
     if numImages > 400:
-        print("Argument Error: Number is too large. Less Than 400.")
-        exit()
+        raise Exception("Argument Error: Number is too large. Less Than 400.")
 
     #build webdriver
     op = webdriver.ChromeOptions()
