@@ -34,14 +34,14 @@ def main(argv):
             try:
                 #This is to get the url for google images w/ selenium
                 time.sleep(LOAD_PAUSE_TIME)
-                driver.get("https://www.images.google.com")
+                driver.get("https://www.google.com/imghp?hl=en&authuser=0&ogbl")
                 #wait for the element
                 WebDriverWait(driver, WEB_PAUSE_TIME).until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'gLFyf')))
                 #get element send query and submit
                 sBox = driver.find_element(By.CLASS_NAME, 'gLFyf')
                 sBox.send_keys(query)
                 sBox.send_keys(Keys.ENTER)
-                WebDriverWait(driver, WEB_PAUSE_TIME).until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'islrc')))
+                WebDriverWait(driver, WEB_PAUSE_TIME).until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'YQ4gaf')))
 
                 # Get scroll height
                 last_height = driver.execute_script("return document.body.scrollHeight")
@@ -70,7 +70,7 @@ def main(argv):
 
                 #pass page source to beautiful soup
                 soup = BeautifulSoup(driver.page_source, "html.parser")
-                images = soup.findAll(class_= 'rg_i Q4LuWd')
+                images = soup.findAll(class_= 'YQ4gaf')
 
                 for x in range(int(numImages)):
 
@@ -103,7 +103,7 @@ def main(argv):
                 print(repr(e) + "\nLine No: ", exc_tb.tb_lineno)
 
         driver.close()
-    except:
+    except Exception as e:
         print(repr(e))
 
 if __name__ == "__main__":
